@@ -1,0 +1,32 @@
+﻿What are the similarities between Singleton and Static class in C#?
+Before discussing the differences between them, let’s first discuss the similarities between Singleton vs Static class in C#
+
+Both static class and singleton class can have only one instance of a copy that is available in memory throughout the whole application. They both are used for holding the global state of an application.
+Both static classes and singleton classes can be implemented as thread-safe.
+What are the differences between Singleton vs Static class in C#?
+The most important point that you need to keep in mind is that Static is a language feature whereas Singleton is a design pattern. So both belong to two different areas. With this keep in mind let’s discuss the differences between Singleton vs static class in C#.
+
+We cannot create an instance of a static class in C#. But we can create a single instance of a singleton class and then can reuse that singleton instance.
+When the compiler compiles the static class then internally it treats the static class as an abstract and sealed class. This is the reason why neither we create an instance nor extend a static class in C#.
+The Singleton class constructor is always marked as private. This is the reason why we cannot create an instance from outside the singleton class. It provides either public static property or a public static method whose job is to create the singleton instance only once and then return that singleton instance each and every time when we called that public static property/method from outside the singleton class.
+A Singleton class can be initialized lazily or can be loaded automatically by CLR (Common Language Runtime) when the program or namespace containing the Singleton class is loaded. whereas a static class is generally initialized when it is first loaded for the first time and it may lead to potential classloader issues.
+It is not possible to pass the static class as a method parameter whereas we can pass the singleton instance as a method parameter in C#.
+In C#, it is possible to implement interfaces, inherit from other classes and allow inheritance with the Singleton class. These are not possible with a static class. So the Singleton class is more flexible as compared to static classes.
+We can clone the Singleton class object whereas it is not possible to clone a static class. It is possible to dispose of the objects of a singleton class whereas it is not possible to dispose of a static class.
+We cannot implement the Dependency Injection design pattern using Static class because the static class is not interface-driven.
+Singleton means a single object across the application lifecycle, so the scope is at the application level. As we know the static class does not have any Object pointer, so the scope is at the App Domain level.
+Memory Management of Static Class vs Singleton Class in C#:
+There is a little confusion about the memory management of static vs Singleton class in C#. The most important point that you need to remember is any class whether it is declared as static or any member of if it is declared as static then that class or those static members would not be collected by Garbage Collector.
+
+The Static variables or static classes are not stored in the Stack memory. There is some specific space in Heap memory called High-Frequency Heap where the static classes and static variables are stored. This space is beyond the scope of Garbage Collector and hence, the memory gets released only when the corresponding Process or AppDomain gets unload.
+
+As the singleton class holds a static reference, so it cannot be collected by the Garbage Collector (GC), and both (Static and Singleton class) get destroyed only when the corresponding Process or AppDomain gets unloads.
+
+Real-world Examples of Singleton Class:
+Some of the real-world scenarios where you can use the singleton design pattern are as follows
+Managing Service Proxies
+Managing Database Connections
+Logging
+Caching
+Data Sharing
+Application Configuration Management
